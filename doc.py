@@ -1,3 +1,6 @@
+#!/bin/env python
+# -*- coding: utf-8 -*-
+
 class Doc:
 
     date = None

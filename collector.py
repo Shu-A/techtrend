@@ -1,3 +1,6 @@
+#!/bin/env python
+# -*- coding: utf-8 -*-
+
 import feedparser
 import urllib2
 
