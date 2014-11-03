@@ -17,8 +17,6 @@ class CollectorRSS:
         self.docs = []
         for entry in fp['entries']:
 
-            print entry['link']
-
             try:
                 html = urllib2.urlopen(entry['link'])
                 soup = BeautifulSoup(html)
