@@ -3,6 +3,9 @@
 
 class Doc:
 
+    title = None
+    content = None
+    data_src = None
     date = None
 
     def __init__(self, title, content, data_src):

@@ -6,6 +6,9 @@ import nltk
 
 class WordCounter:
 
+    docs = None
+    freq_dist = None
+
     def __init__(self, docs):
         self.docs = docs
 
@@ -15,7 +18,8 @@ class WordCounter:
         #texts = [ tagger.parse(doc.content.encode('utf-8')).split() for doc in docs ]
         texts = []
         for doc in self.docs:
-            node = tagger.parseToNode(doc.content.encode('utf-8'))
+            #node = tagger.parseToNode(doc.content.encode('utf-8'))
+            node = tagger.parseToNode(doc.title.encode('utf-8'))
             tokens = []
             while node:
                 if node.feature.split(',')[0] == u'名詞'.encode('utf-8'):
@@ -24,7 +28,6 @@ class WordCounter:
 
             texts.append(tokens)
 
-        tc = nltk.TextCollection(texts)
-
-        self.freq_dist = tc.vocab()
+        #tc = nltk.TextCollection(texts)
+        #self.freq_dist = tc.vocab()
 
