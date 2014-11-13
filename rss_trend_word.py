@@ -14,6 +14,7 @@ def main():
     f = open(sys.argv[1])
     feed_urls = [ line[:-1] for line in f.readlines() ]
     f.close()
+
     print '--- URL list ---'
     for feed_url in feed_urls:
         print feed_url
@@ -26,10 +27,14 @@ def main():
         cr.collect()
         docs += cr.docs
 
+    print 'Number of documents : %d' % len(docs)
+
     wc = WordCounter(docs)
     wc.count()
-    for k ,v in sorted(wc.freq_dist.items(), key=lambda x:x[1], reverse=True)[:int(sys.argv[2])]:
-        print k, v
+    if wc.freq_dist:
+        for k ,v in sorted(wc.freq_dist.items(), key=lambda x:x[1], reverse=True)[:int(sys.argv[2])]:
+            print k, v
 
 if __name__ == '__main__':
     main()
+
