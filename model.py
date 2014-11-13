@@ -15,19 +15,22 @@ class WordCounter:
     def count(self, noun_only=True):
         tagger = MeCab.Tagger('-Owakati')
 
-        #texts = [ tagger.parse(doc.content.encode('utf-8')).split() for doc in docs ]
         texts = []
         for doc in self.docs:
-            #node = tagger.parseToNode(doc.content.encode('utf-8'))
-            node = tagger.parseToNode(doc.title.encode('utf-8'))
+            node = tagger.parseToNode(doc.content.encode('utf-8'))
+            #node = tagger.parseToNode(doc.title.encode('utf-8'))
             tokens = []
             while node:
                 if node.feature.split(',')[0] == u'名詞'.encode('utf-8'):
-                    tokens.append(node.surface)
+                    try:
+                        tokens.append(node.surface.decode('utf-8'))
+                    except UnicodeDecodeError:
+                        pass
+
                 node = node.next
 
             texts.append(tokens)
 
-        #tc = nltk.TextCollection(texts)
-        #self.freq_dist = tc.vocab()
+        tc = nltk.TextCollection(texts)
+        self.freq_dist = tc.vocab()
 
