@@ -17,11 +17,12 @@ class WordCounter:
 
         texts = []
         for doc in self.docs:
-            node = tagger.parseToNode(doc.content.encode('utf-8'))
-            #node = tagger.parseToNode(doc.title.encode('utf-8'))
+            #node = tagger.parseToNode(doc.content.encode('utf-8'))
+            node = tagger.parseToNode(doc.title.encode('utf-8'))
             tokens = []
             while node:
-                if node.feature.split(',')[0] == u'名詞'.encode('utf-8'):
+                #if node.feature.split(',')[0] == u'名詞'.encode('utf-8'):
+                if node.feature.split(',')[1] == u'固有名詞'.encode('utf-8'):
                     try:
                         tokens.append(node.surface.decode('utf-8'))
                     except UnicodeDecodeError:
