@@ -1,0 +1,5 @@
+http://www.publickey1.jp/atom.xml
+http://jp.techcrunch.com/feed/
+http://sourceforge.jp/magazine/rss
+http://www.infoq.com/jp/feed?token=q7nHm53X8dPCLPq4BVuOAsKkPGyKff6w
+http://postd.cc/feed/
